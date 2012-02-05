@@ -97,8 +97,8 @@ public class LoginEntity
         array[1] = hostname;
         array[2] = ipaddress;
         array[3] = groupid.toString();
-        //array[4] = login_time.toString();
-        //array[5] = logout_time.toString();
+        if(login_time!=null) array[4] = login_time.toString();
+        if(logout_time!=null) array[5] = logout_time.toString();
         return array;
     }
 }

@@ -61,12 +61,12 @@ public class LoginService {
         }
         return "fail";
     }
-    public static String getReport()
+    public static String getReport(Date date)
     {
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
         Logger logger = LoggerFactory.getLogger(LoginService.class);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = sdf.format(new Date());
+        String currentDate = sdf.format(date);
         List<Logins> logins = Logins.where("DATE(login_time) = ?", currentDate);      
         Iterator<Logins> it = logins.iterator();
         List<LoginEntity> loginEntities = new ArrayList<LoginEntity>();
