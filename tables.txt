@@ -1,0 +1,46 @@
+CREATE DATABASE  `lab_info` ;
+
+CREATE TABLE  `lab_info`.`logins` (
+`ipaddress` VARCHAR( 15 ),
+`username` VARCHAR( 30 ),
+`hostname` VARCHAR( 15 ),
+`groupid` INT( 5 ),
+`login_time` DATETIME,
+`logout_time` DATETIME
+) ENGINE = MYISAM ;
+
+
+CREATE TABLE  `lab_info`.`pc_allocation` (
+`machine_number` INT( 3 ),
+`employee_number` INT( 7 ),
+`batch_id` INT( 3 )
+) ENGINE = MYISAM ;
+
+CREATE TABLE  `lab_info`.`machine_info` (
+`machine_number` INT( 3 ),
+`hostname` VARCHAR( 15 ),
+PRIMARY KEY (  `machine_number` ,  `hostname` )
+) ENGINE = MYISAM ;
+
+
+
+CREATE TABLE `batch_info` 
+(
+  `batch_id` int(3),
+  
+`batch_name` varchar(20),
+  
+`batch_owner` varchar(30),
+  
+PRIMARY KEY (`batch_id`)
+
+) ENGINE=MyISAM;
+
+CREATE TABLE  `lab_info`.`trainee_info` (
+`employee_number` INT( 7 ),
+`mail_id` VARCHAR( 30 ),
+`batch_id` INT( 3 ),
+PRIMARY KEY (  `employee_number` ,  `batch_id` )
+) ENGINE = MYISAM ;
+
+http://localhost:8080/Batch_Management/login?username=mario&ipaddress=127.0.0.1&hostname=dream&groupid=502&group=admin
