@@ -43,4 +43,16 @@ CREATE TABLE  `lab_info`.`trainee_info` (
 PRIMARY KEY (  `employee_number` ,  `batch_id` )
 ) ENGINE = MYISAM ;
 
+CREATE TABLE `defaulters` (
+  
+`hostname` varchar(15) NOT NULL,
+  
+`ipaddress` varchar(15) NOT NULL,
+  
+`username` varchar(30) NOT NULL,
+  
+`login_time` datetime NOT NULL
+
+) ENGINE=MyISAM;
+
 http://localhost:8080/Batch_Management/login?username=mario&ipaddress=127.0.0.1&hostname=dream&groupid=502&group=admin
