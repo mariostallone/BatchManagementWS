@@ -1,7 +1,11 @@
 package bm.service;
 
 import bm.entities.LoginEntity;
+import bm.models.Defaulters;
 import bm.models.Logins;
+import bm.models.Machine_Info;
+import bm.models.PC_Allocation;
+import bm.models.Trainee_Info;
 import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ import org.slf4j.LoggerFactory;
 public class LoginService {
     public static String registerLogin(LoginEntity loginEntity)
     {
+        Logger logger = LoggerFactory.getLogger(LoginService.class);
         if(loginEntity!=null)
         {
             try 
@@ -31,6 +36,26 @@ public class LoginService {
                 login.set("login_time",new Date());
                 login.set("logout_time",loginEntity.getLogout_time());
                 login.save();
+                //Defaulters Check
+                Machine_Info machineInfo = Machine_Info.findFirst("hostname = ?", loginEntity.getHostname());
+                if(machineInfo!=null)
+                {
+                    PC_Allocation allocation = PC_Allocation.findFirst("machine_number = ?", machineInfo.get("machine_number"));
+                    if(allocation!=null)
+                    {
+                        Trainee_Info trainee = Trainee_Info.findFirst("employee_number = ?", allocation.get("employee_number"));
+                        logger.info(trainee.getString("mail_id"));
+                        if(!trainee.getString("mail_id").equalsIgnoreCase(loginEntity.getUsername()))
+                        {
+                            Defaulters defaulter = new Defaulters();
+                            defaulter.set("hostname",loginEntity.getHostname());
+                            defaulter.set("ipaddress",loginEntity.getIpaddress());
+                            defaulter.set("username",loginEntity.getUsername());
+                            defaulter.set("login_time", new Date());
+                            defaulter.save();
+                        }
+                    }
+                }
             }
             finally
             {

@@ -5,6 +5,7 @@
 package bm.models;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.Table;
 
 /**
  *
@@ -16,6 +17,7 @@ import org.javalite.activejdbc.Model;
     PRIMARY KEY (  `employee_number` ,  `batch_id` )
     ) ENGINE = MYISAM ;
  */
+@Table("trainee_info")
 public class Trainee_Info extends Model{
     
 }

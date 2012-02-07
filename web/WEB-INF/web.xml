@@ -16,6 +16,14 @@
         <servlet-name>PCAllocationServlet</servlet-name>
         <servlet-class>bm.servlet.PCAllocationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MachineInfoServlet</servlet-name>
+        <servlet-class>bm.servlet.MachineInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DefaulterServlet</servlet-name>
+        <servlet-class>bm.servlet.DefaulterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>PCAllocationServlet</servlet-name>
         <url-pattern>/pcallocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MachineInfoServlet</servlet-name>
+        <url-pattern>/machineinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DefaulterServlet</servlet-name>
+        <url-pattern>/defaulters</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

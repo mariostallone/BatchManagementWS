@@ -59,10 +59,6 @@ public class LoginServlet extends HttpServlet {
                 out.println("No Values Passed");
             }
         }
-        catch(Exception e)
-        {
-            logger.error(e.getMessage());
-        }
         finally {            
             out.close();
         }

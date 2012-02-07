@@ -10,11 +10,9 @@ import org.javalite.activejdbc.annotations.Table;
 /**
  *
  * @author Mario Stallone
- * CREATE TABLE  `lab_info`.`pc_allocation` (
-    `machine_number` INT( 3 ),
-    `employee_number` INT( 7 ),
-    `batch_id` INT( 3 )
-    ) ENGINE = MYISAM ;
  */
-@Table(value="pc_allocation")
-public class PC_Allocation extends Model {}
+
+@Table(value="defaulters")
+public class Defaulters extends Model{
+    
+}

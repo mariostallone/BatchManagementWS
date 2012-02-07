@@ -5,6 +5,8 @@
 package bm.models;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.BelongsTo;
+import org.javalite.activejdbc.annotations.Table;
 
 /**
  *
@@ -22,4 +24,6 @@ import org.javalite.activejdbc.Model;
 
     ) ENGINE=MyISAM;
  */
+@Table(value="batch_info")
+@BelongsTo(parent = PC_Allocation.class, foreignKeyName = "batch_id")
 public class Batch_Info extends Model {}
