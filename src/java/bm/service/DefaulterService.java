@@ -29,7 +29,7 @@ public class DefaulterService {
         Logger logger = LoggerFactory.getLogger(LoginService.class);
         try
         {
-            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
             LazyList<Defaulters> defaulterInfo = Defaulters.findAll();
             List<DefaulterEntity> defaulters = new ArrayList<DefaulterEntity>();
             for(Defaulters defaulterModel : defaulterInfo)
