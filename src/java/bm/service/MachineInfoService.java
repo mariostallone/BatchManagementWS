@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.LazyList;
-import org.javalite.activejdbc.Model;
 
 /**
  *
@@ -25,7 +24,7 @@ public class MachineInfoService {
         Gson gson = new Gson();
         try 
         {
-            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
             List<Machine_Info> machineInfoList = Machine_Info.findAll();
             List<MachineInfoEntity> machines = new ArrayList<MachineInfoEntity>();
             for(Machine_Info machine: machineInfoList)

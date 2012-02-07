@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.javalite.activejdbc.Base;
-import org.javalite.activejdbc.LazyList;
 
 /**
  *
@@ -26,7 +25,7 @@ public class PCAllocationService {
         Gson gson = new Gson();
         try 
         {
-            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+            Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
             List<PC_Allocation> pcAllocationList = PC_Allocation.where("batch_id = ?", batchID);
             Batch_Info batchInfo = Batch_Info.findFirst("batch_id = ?", batchID);
             List<PCAllocationEntity> allocations = new ArrayList<PCAllocationEntity>();

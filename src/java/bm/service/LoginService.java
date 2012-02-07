@@ -27,7 +27,7 @@ public class LoginService {
         {
             try 
             {
-                Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+                Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
                 Logins login = new Logins();
                 login.set("ipaddress",loginEntity.getIpaddress());
                 login.set("username",loginEntity.getUsername());
@@ -71,7 +71,7 @@ public class LoginService {
         {
             try
             {
-                Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+                Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String currentDate = sdf.format(new Date());
                 Logins login = Logins.findFirst("ipaddress = ? and DATE(login_time) = ?", loginEntity.getIpaddress(),currentDate);
@@ -88,7 +88,7 @@ public class LoginService {
     }
     public static String getReport(Date date)
     {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "25234117");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/lab_info", "batchadmin", "1234");
         Logger logger = LoggerFactory.getLogger(LoginService.class);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(date);
