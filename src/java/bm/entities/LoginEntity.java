@@ -2,8 +2,12 @@ package bm.entities;
 
 import bm.models.Logins;
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * To change this template, choose Tools | Templates
@@ -28,11 +32,30 @@ public class LoginEntity
     
     public LoginEntity(Logins login) 
     {
+        Logger logger = LoggerFactory.getLogger(LoginEntity.class.getName());
         groupid=Integer.parseInt(login.get("groupid").toString());
         hostname=login.get("hostname").toString();
         ipaddress=login.get("ipaddress").toString();
-        //login_time=new Date(login.get("login_time").toString());
-        //logout_time=new Date(login.get("logout_time").toString());
+        try {
+            if(login.get("login_time")!=null) 
+            {
+                String string = login.get("login_time").toString();
+                Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(string);
+                login_time=date;
+            } 
+            if(login.get("logout_time")!=null) 
+            {
+                String string = login.get("logout_time").toString();
+                string = string.substring(0, string.length()-1);
+                logger.info(string);
+                Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(string);
+                logout_time=date;
+            }
+        }
+        catch (ParseException ex) 
+        {
+            logger.error(ex.getMessage());
+        }
         username=login.get("username").toString();
     }
     
@@ -97,8 +120,18 @@ public class LoginEntity
         array[1] = hostname;
         array[2] = ipaddress;
         array[3] = groupid.toString();
-        if(login_time!=null) array[4] = login_time.toString();
-        if(logout_time!=null) array[5] = logout_time.toString();
+        if(login_time!=null)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss a");
+            String date = sdf.format(login_time);
+            array[4] = date;
+        }
+        if(logout_time!=null)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss a");
+            String date = sdf.format(logout_time);
+            array[5] = date;
+        }
         return array;
     }
 }
